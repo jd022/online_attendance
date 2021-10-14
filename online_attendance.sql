@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2021 at 10:01 PM
+-- Generation Time: Oct 14, 2021 at 09:03 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -29,7 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `attendance` (
   `id` int(11) NOT NULL,
-  `users_subjects_id` int(11) NOT NULL,
+  `users_id` int(11) NOT NULL,
+  `subjects_id` int(11) NOT NULL,
   `time_in` datetime NOT NULL,
   `time_out` datetime NOT NULL,
   `present` int(11) NOT NULL,
@@ -37,6 +38,13 @@ CREATE TABLE `attendance` (
   `date_time_update` datetime NOT NULL,
   `remarks` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `attendance`
+--
+
+INSERT INTO `attendance` (`id`, `users_id`, `subjects_id`, `time_in`, `time_out`, `present`, `date_time_created`, `date_time_update`, `remarks`) VALUES
+(1, 1, 1, '2021-10-14 19:55:22', '2021-10-14 19:55:22', 1, '2021-10-14 19:55:22', '2021-10-14 19:55:22', '');
 
 -- --------------------------------------------------------
 
@@ -181,7 +189,7 @@ ALTER TABLE `user_types`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `subjects`
