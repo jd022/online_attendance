@@ -1,3 +1,11 @@
+<?php
+session_start();
+include("../dbConnection.php");
+if(empty($_SESSION['user_name']) && empty($_SESSION['password'])){
+  header("Location:index.php");
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,5 +19,14 @@
   <a href="professors.php">Professors</a>
   <a href="subjects.php">Subjects</a>
   <a href="attendance.php">Attendance</a>
+  <a href="home.php?logout">Logout</a>
 </body>
 </html>
+<?php 
+  if(isset($_GET['logout'])){
+  session_unset();
+	session_destroy();
+	header("location:index.php");
+	exit();
+  }
+?>

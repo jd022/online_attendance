@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2021 at 09:03 PM
+-- Generation Time: Oct 27, 2021 at 10:51 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -101,7 +101,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_id`, `last_name`, `given_name`, `middle_name`, `contact_number`, `email_address`, `password`, `verified`, `user_types_id`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
-(1, '0123456', 'Dela Cruz', 'Juan', 'Pablo', '01234567897', 'sample@gmail.com', '4297f44b13955235245b2497399d7a93', 1, 2, '2021-10-13 03:45:39', '0000-00-00 00:00:00', '');
+(1, '0123456', 'Dela Cruz', 'Juan', 'Pablo', '01234567897', 'sample@gmail.com', '4297f44b13955235245b2497399d7a93', 1, 2, '2021-10-13 03:45:39', '0000-00-00 00:00:00', ''),
+(3, '1902666', 'Lapore', 'Jade Mark', 'Dagaas', '09292006146', 'jdmrklapore22@gmail.com', '49f0bad299687c62334182178bfd75d8', 0, 1, '2021-10-28 04:42:54', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -123,7 +124,7 @@ CREATE TABLE `users_subjects` (
 --
 
 INSERT INTO `users_subjects` (`id`, `users_id`, `subjects_id`, `date_time_created`, `date_time_update`, `remarks`) VALUES
-(1, 1, 1, '2021-10-13 03:45:39', '0000-00-00 00:00:00', '');
+(1, 123456, 1, '2021-10-13 03:45:39', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -201,7 +202,7 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users_subjects`

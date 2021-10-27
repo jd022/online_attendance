@@ -1,5 +1,10 @@
 <?php
+session_start();
 include "../dbConnection.php";
+if(!isset($_SESSION['user_name']) && !isset($_SESSION['password'])){
+  header("location:index.php");
+  exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,11 +22,10 @@ include "../dbConnection.php";
   <a href="attendance.php">All</a>
   <a href="attendance.php?student">Student</a>
   <a href="attendance.php?professor">Professor</a>
+  <a href="home.php?logout">Logout</a>
+  
   <?php if(isset($_GET['student'])){
-  if($_GET['student'] == 'student'){
-    header("Location:attendance.php");
-    exit();
-  } 
+ 
   $display_student_attendance = "SELECT users.user_id, users.last_name, users.given_name, users.middle_name, 
   subjects.names, attendance.time_in, attendance.time_out, attendance.present
   FROM attendance 
@@ -70,10 +74,7 @@ include "../dbConnection.php";
   <?php }?>
 
   <?php }else if(isset($_GET['professor'])){
-  if($_GET['professor'] == 'professor'){
-    header("Location:attendance.php");
-    exit();
-  } 
+  
   $display_prof_attendance = "SELECT users.user_id, users.last_name, users.given_name, users.middle_name, 
   subjects.names, attendance.time_in, attendance.time_out, attendance.present
   FROM attendance 

@@ -1,5 +1,10 @@
 <?php
+session_start();
 include "../dbConnection.php";
+if(!isset($_SESSION['user_name']) && !isset($_SESSION['password'])){
+  header("location:index.php");
+  exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +19,7 @@ include "../dbConnection.php";
   <a href="professors.php">Professors</a>
   <a href="subjects.php">Subjects</a>
   <a href="attendance.php">Attendance</a>
+  <a href="home.php?logout">Logout</a>
   <form action="" method="POST">
     <label for="">User ID</label><br>
     <input type="number" name="user_id"><br>
@@ -138,7 +144,6 @@ include "../dbConnection.php";
       '$password', '$verify', '$default_user_type', '$added_on')";
       $query = mysqli_query($con, $sql);
       if($query){
-        $users_id = $con->insert_id;
         $insert_user_subject = "INSERT INTO users_subjects (`users_id`, `subjects_id`, `date_time_created`)
         VALUES ('$users_id', '$subject', '$added_on')";
         $query_request = mysqli_query($con, $insert_user_subject);
