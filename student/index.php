@@ -14,6 +14,6 @@
     <input type="password" name="password" placeholder="Password">
     <button type="submit" name="login">Login</button>
   </form>
-  <p>Don`t have account yet? Register <a href="register.php">here.</a></p>
+  <p>Didn`t have an account yer? Click <a href="register.php">here.</a></p>
 </body>
 </html>

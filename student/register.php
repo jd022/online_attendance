@@ -20,9 +20,9 @@ include("../dbConnection.php");
     <input type="number" name="contact_number" placeholder="Contact No."><br>
     <input type="email" name="email" placeholder="E-mail Address"><br>
     <input type="password" name="password" placeholder="Password"><br>
-    <input type="password" name="c_password" placeholder="Confirm Password"><br>
+    <input type="password" name="c_password" placeholder="Re-Enter Password"><br>
     <a href="index.php">Login</a>
-    <button type="submit" name="register">Register</button>
+    <button type="submit" name="register">Sign Up</button>
   </form>
 </body>
 </html>
@@ -158,7 +158,7 @@ include("../dbConnection.php");
     else if(!preg_match("/^[a-zA-Z\s]+$/", $_POST['given_name'])){
       echo '<script>swal({
         title: "Oops Invalid!",
-        text: "Last Name field should be character only",
+        text: "Given Name field should be character only",
         icon: "warning",
         }).then(function() {
         // Redirect the user
@@ -169,7 +169,7 @@ include("../dbConnection.php");
     else if(!preg_match("/^[a-zA-Z\s]+$/", $_POST['middle_name'])){
       echo '<script>swal({
         title: "Oops Invalid!",
-        text: "Last Name field should be character only",
+        text: "Middle Name field should be character only",
         icon: "warning",
         }).then(function() {
         // Redirect the user
