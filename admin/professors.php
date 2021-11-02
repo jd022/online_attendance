@@ -291,9 +291,9 @@ if(!isset($_SESSION['user_name']) && !isset($_SESSION['password'])){
             echo "NOT INSERTED" . $con->error;
             exit();
           }
-        }else{
-          echo "SOMETHING WENT WRONG" . $con->error;
-          exit();
+          }else{
+            echo "SOMETHING WENT WRONG" . $con->error;
+            exit();
         }
       }
     }
