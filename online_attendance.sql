@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2021 at 10:51 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.8
+-- Generation Time: Nov 06, 2021 at 09:52 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,8 +24,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `administrator`
+--
+
+CREATE TABLE `administrator` (
+  `id` int(11) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `administrator`
+--
+
+INSERT INTO `administrator` (`id`, `username`, `password`) VALUES
+(1, 'admin', '123');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `attendance`
--- update
 --
 
 CREATE TABLE `attendance` (
@@ -46,6 +64,48 @@ CREATE TABLE `attendance` (
 
 INSERT INTO `attendance` (`id`, `users_id`, `subjects_id`, `time_in`, `time_out`, `present`, `date_time_created`, `date_time_update`, `remarks`) VALUES
 (1, 1, 1, '2021-10-14 19:55:22', '2021-10-14 19:55:22', 1, '2021-10-14 19:55:22', '2021-10-14 19:55:22', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `courses`
+--
+
+CREATE TABLE `courses` (
+  `id` int(11) NOT NULL,
+  `course_name` varchar(20) NOT NULL,
+  `date_time_created` datetime NOT NULL,
+  `date_time_updated` datetime NOT NULL,
+  `remarks` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`id`, `course_name`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
+(1, 'BSCS', '2021-11-06 13:25:51', '0000-00-00 00:00:00', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sets`
+--
+
+CREATE TABLE `sets` (
+  `id` int(11) NOT NULL,
+  `set_name` varchar(20) NOT NULL,
+  `date_time_created` datetime NOT NULL,
+  `date_time_updated` datetime NOT NULL,
+  `remarks` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sets`
+--
+
+INSERT INTO `sets` (`id`, `set_name`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
+(1, 'SET - A', '2021-11-06 13:28:40', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -102,8 +162,54 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_id`, `last_name`, `given_name`, `middle_name`, `contact_number`, `email_address`, `password`, `verified`, `user_types_id`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
-(1, '0123456', 'Dela Cruz', 'Juan', 'Pablo', '01234567897', 'sample@gmail.com', '4297f44b13955235245b2497399d7a93', 1, 2, '2021-10-13 03:45:39', '0000-00-00 00:00:00', ''),
-(3, '1902666', 'Lapore', 'Jade Mark', 'Dagaas', '09292006146', 'jdmrklapore22@gmail.com', '49f0bad299687c62334182178bfd75d8', 0, 1, '2021-10-28 04:42:54', '0000-00-00 00:00:00', '');
+(12, '0123456', 'Campus', 'Juan', 'Sumulong', '09123345261', 'no_reply@example.com', '202cb962ac59075b964b07152d234b70', 1, 1, '2021-11-06 14:54:17', '0000-00-00 00:00:00', ''),
+(13, '123123213', 'Anathema', 'Forest', 'Choker', '0926546878', 'stomach@example.com', '4297f44b13955235245b2497399d7a93', 0, 1, '2021-11-06 16:32:28', '0000-00-00 00:00:00', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_course`
+--
+
+CREATE TABLE `users_course` (
+  `id` int(11) NOT NULL,
+  `user_id` varchar(20) NOT NULL,
+  `course_id` varchar(30) NOT NULL,
+  `date_time_created` datetime NOT NULL,
+  `date_time_updated` datetime NOT NULL,
+  `remarks` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users_course`
+--
+
+INSERT INTO `users_course` (`id`, `user_id`, `course_id`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
+(1, '0123456', '1', '2021-11-06 14:54:17', '0000-00-00 00:00:00', ''),
+(2, '123123213', '1', '2021-11-06 16:32:28', '0000-00-00 00:00:00', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_set`
+--
+
+CREATE TABLE `users_set` (
+  `id` int(11) NOT NULL,
+  `user_id` varchar(20) NOT NULL,
+  `set_id` varchar(20) NOT NULL,
+  `date_time_created` datetime NOT NULL,
+  `date_time_updated` datetime NOT NULL,
+  `remarks` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users_set`
+--
+
+INSERT INTO `users_set` (`id`, `user_id`, `set_id`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
+(1, '0123456', '1', '2021-11-06 14:54:17', '0000-00-00 00:00:00', ''),
+(2, '123123213', '1', '2021-11-06 16:32:28', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -119,13 +225,6 @@ CREATE TABLE `users_subjects` (
   `date_time_update` datetime NOT NULL,
   `remarks` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users_subjects`
---
-
-INSERT INTO `users_subjects` (`id`, `users_id`, `subjects_id`, `date_time_created`, `date_time_update`, `remarks`) VALUES
-(1, 123456, 1, '2021-10-13 03:45:39', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -154,9 +253,27 @@ INSERT INTO `user_types` (`id`, `names`, `date_time_created`, `date_time_update`
 --
 
 --
+-- Indexes for table `administrator`
+--
+ALTER TABLE `administrator`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `attendance`
 --
 ALTER TABLE `attendance`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `courses`
+--
+ALTER TABLE `courses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sets`
+--
+ALTER TABLE `sets`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -169,6 +286,18 @@ ALTER TABLE `subjects`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users_course`
+--
+ALTER TABLE `users_course`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users_set`
+--
+ALTER TABLE `users_set`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -188,9 +317,27 @@ ALTER TABLE `user_types`
 --
 
 --
+-- AUTO_INCREMENT for table `administrator`
+--
+ALTER TABLE `administrator`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `courses`
+--
+ALTER TABLE `courses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `sets`
+--
+ALTER TABLE `sets`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -203,7 +350,19 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `users_course`
+--
+ALTER TABLE `users_course`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `users_set`
+--
+ALTER TABLE `users_set`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users_subjects`
