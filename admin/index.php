@@ -60,7 +60,7 @@ session_start();
          });</script>';
          exit();
     }else{
-      $sql = "SELECT * FROM administrator WHERE user_name = '$username' AND password = '$password'";
+      $sql = "SELECT * FROM administrator WHERE username = '$username' AND password = '$password'";
       $query = mysqli_query($con, $sql);
       if(mysqli_num_rows($query) == 1){
         $rows = mysqli_fetch_array($query);

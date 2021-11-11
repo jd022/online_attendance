@@ -22,7 +22,7 @@ include("dbConnection.php");
       if(mysqli_num_rows($query) > 0){
         while($rows = mysqli_fetch_array($query)){
       ?>
-      <option value="<?php echo $rows['id']?>"><?php echo $rows['name']?></option>
+      <option value="<?php echo $rows['id']?>"><?php echo $rows['course_name']?></option>
       <?php }}?>
     </select><br>
     <select name="set" id="">
@@ -33,7 +33,7 @@ include("dbConnection.php");
       if(mysqli_num_rows($query_sets) > 0){
         while($rows = mysqli_fetch_array($query_sets)){
       ?>
-      <option value="<?php echo $rows['id']?>"><?php echo $rows['name']?></option>
+      <option value="<?php echo $rows['id']?>"><?php echo $rows['set_name']?></option>
       <?php }}?>
     </select><br>
     <input type="text" name="last_name" placeholder="Last Name"><br>

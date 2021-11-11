@@ -36,10 +36,10 @@ if(empty($_SESSION['email']) && empty($_SESSION['student'])){
         exit();
     }
     ?>
-    <a href="">Attendance</a>
-    <a href="">Subject</a>
-    <a href="">My Profile</a>
-    <a href="">Attendance History</a>
+    <a href="http://localhost/online_attendance/student/attendance.php">Attendance</a>
+    <a href="http://localhost/online_attendance/student/subject.php">Subject</a>
+    <a href="http://localhost/online_attendance/student/profile.php">My Profile</a>
+    <a href="http://localhost/online_attendance/student/attendance-history.php">Attendance History</a>
     <a href="home.php?st_signOut">Sign Out</a>
     <p>i should die</p>
 </body>

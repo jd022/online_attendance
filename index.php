@@ -16,6 +16,7 @@ include("dbConnection.php");
     <input type="email" name="email_address" placeholder="E-mail">
     <input type="password" name="password" placeholder="Password">
     <button type="submit" name="login">Login</button>
+    <p>Didn`t have account yet? Register <a href="http://localhost/online_attendance/register.php">here</a></p>
   </form>
 </body>
 </html>
